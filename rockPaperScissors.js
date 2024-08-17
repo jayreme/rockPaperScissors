@@ -12,3 +12,8 @@ const getComputerChoice =  () => {
             break;
     }
 }
+
+const getHumanChoice = () => {
+    const choice = prompt("Enter your choice: ")
+    console.log(choice)
+}

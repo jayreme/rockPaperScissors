@@ -1,3 +1,4 @@
+let humanScore = 0 , computerScore = 0;
 const getComputerChoice =  () => {
     const choice = Math.floor(Math.random() * 3  +1);
     switch(choice){
@@ -10,10 +11,32 @@ const getComputerChoice =  () => {
         case 3:
             return 'scissors'
             break;
+        default:
+            break;
     }
 }
 
 const getHumanChoice = () => {
-    const choice = prompt("Enter your choice: ")
+    const choice = prompt("Enter your choice: ").toLowerCase()
     console.log(choice)
+    return choice;
 }
+
+const playRound = (humanChoice, computerChoice) => {
+    if(humanChoice == computerChoice){
+        return console.log('Tie no points for this round')
+    }
+    else if(humanChoice == 'paper' && computerChoice == 'rock' || humanChoice == 'scissors' && computerChoice == 'paper' || humanChoice == 'rock' && computerChoice == 'scissors'){
+        humanScore++;
+        return console.log(`You win! ${humanChoice} beats ${computerChoice}`)
+    }
+    else{
+        computerScore++;
+        return console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+    }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection,computerSelection);

@@ -1,4 +1,3 @@
-let humanScore = 0 , computerScore = 0;
 const getComputerChoice =  () => {
     const choice = Math.floor(Math.random() * 3  +1);
     switch(choice){
@@ -36,7 +35,24 @@ const playRound = (humanChoice, computerChoice) => {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+let humanScore = 0 , computerScore = 0;
 
-playRound(humanSelection,computerSelection);
+const playGame = () => {
+    
+    for(let i = 0; i < 5; i++){
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection)
+    }
+    if(humanScore > computerScore) {
+        console.log(`You win the game with a score of ${humanScore} - ${computerScore}`)
+    }
+    else if (humanScore == computerScore){
+        console.log(`No one wins! It's a tie`)
+    }
+    else{
+        console.log(`You lose the game with a score of ${humanScore} - ${computerScore}`)
+    }
+    humanScore =0,computerScore=0;
+
+}
